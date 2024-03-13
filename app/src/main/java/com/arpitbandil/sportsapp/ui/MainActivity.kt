@@ -2,11 +2,7 @@ package com.arpitbandil.sportsapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.arpitbandil.sportsapp.R
 import com.arpitbandil.sportsapp.databinding.ActivityMainBinding
@@ -28,7 +24,9 @@ class MainActivity : AppCompatActivity() {
         )
         binding.bottomMainNav.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.bottomMainNav.onNavigationItemSelected(destination.id)
+            if (binding.bottomMainNav.menu.findItem(destination.id) != null) {
+                binding.bottomMainNav.onNavigationItemSelected(destination.id)
+            }
         }
     }
 }

@@ -9,7 +9,11 @@
         android:id="@+id/ratings"
         android:name="com.arpitbandil.sportsapp.ui.rating.RatingsFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_ratings" />
+        tools:layout="@layout/fragment_ratings">
+        <action
+            android:id="@+id/action_team_details"
+            app:destination="@id/teamDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/matches"
         android:name="com.arpitbandil.sportsapp.ui.MatchesFragment"
@@ -30,4 +34,18 @@
         android:name="com.arpitbandil.sportsapp.ui.ProfileFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/teamDetailsFragment"
+        android:name="com.arpitbandil.sportsapp.ui.team.TeamDetailsFragment"
+        android:label="TeamDetailsFragment"
+        tools:layout="@layout/fragment_team_details">
+        <argument
+            android:name="team"
+            app:argType="com.arpitbandil.sportsapp.modal.Team" />
+        <argument
+            android:name="position"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
 </navigation>

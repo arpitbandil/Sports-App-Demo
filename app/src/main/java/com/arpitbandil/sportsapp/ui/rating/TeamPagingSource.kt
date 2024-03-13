@@ -8,12 +8,15 @@ import androidx.paging.PagingState
 import androidx.paging.cachedIn
 import com.arpitbandil.sportsapp.generators.Generator.generateTeams
 import com.arpitbandil.sportsapp.modal.Team
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 
 
 private const val ITEMS_PER_PAGE = 10
+
+@OptIn(DelicateCoroutinesApi::class)
 val items: Flow<PagingData<Team>> = Pager(
     config = PagingConfig(pageSize = ITEMS_PER_PAGE, enablePlaceholders = false),
     pagingSourceFactory = { TeamPagingSource() }
@@ -33,7 +36,7 @@ class TeamPagingSource() : PagingSource<Int, Team>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Team> {
         val position = params.key ?: STARTING_PAGE_INDEX
-        if (position != STARTING_PAGE_INDEX) delay(5000)
+        if (position != STARTING_PAGE_INDEX) delay(3000)
         return LoadResult.Page(
             data = generateTeams(params.loadSize),
             prevKey = if (position == STARTING_PAGE_INDEX) null else -1,

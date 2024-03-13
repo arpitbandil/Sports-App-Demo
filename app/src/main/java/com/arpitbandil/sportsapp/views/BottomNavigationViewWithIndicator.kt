@@ -9,7 +9,6 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Shader
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -40,6 +39,7 @@ class BottomNavigationViewWithIndicator : BottomNavigationView,
     }
 
     private val defaultSize = resources.getDimension(R.dimen.default_size)
+    private var lastSelectedID = -1
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -60,10 +60,14 @@ class BottomNavigationViewWithIndicator : BottomNavigationView,
     }
 
     fun onNavigationItemSelected(item: Int) {
+        if (lastSelectedID == item)
+            return
+        lastSelectedID = item
         onItemSelected(item)
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun setOnNavigationItemSelectedListener(listener: OnNavigationItemSelectedListener?) {
         externalSelectedListener = listener
     }
@@ -163,9 +167,5 @@ class BottomNavigationViewWithIndicator : BottomNavigationView,
         }
         it.removeAllUpdateListeners()
         animator = null
-    }
-
-    companion object {
-        val TAG = "BottomNavigationViewWithIndicator"
     }
 }

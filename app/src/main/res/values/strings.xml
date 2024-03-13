@@ -8,4 +8,8 @@
     <string name="team_icon">Team Icon</string>
     <string name="oops_no_notifications_yet">Oops! No notifications yet</string>
     <string name="not_able_to_fetch_news_right_now_try_again_later">Not able to fetch news right now!\nTry again later.</string>
+    <string name="back">Back</string>
+    <string name="team_icon_transition">%d-TeamIcon</string>
+    <string name="team_name_transition">%d-TeamName</string>
+    <string name="team_details">Team Details</string>
 </resources>

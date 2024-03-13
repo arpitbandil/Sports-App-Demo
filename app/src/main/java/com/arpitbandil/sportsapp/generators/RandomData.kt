@@ -1,10 +1,7 @@
 package com.arpitbandil.sportsapp.generators
 
-import androidx.paging.PagingData
 import com.arpitbandil.sportsapp.modal.Team
 import com.murgupluoglu.flagkit.FlagKit
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
 import kotlin.random.Random
 
 val teamNames = listOf(
@@ -42,14 +39,36 @@ val teamIcons = listOf(
     "https://companieslogo.com/img/orig/2020.HK-97bd150d.png",
     "https://brandlogos.net/wp-content/uploads/2014/12/tampa_bay_buccaneers-logo_brandlogos.net_mctz4.png",
     "https://s.yimg.com/cv/apiv2/default/nfl/20190724/500x500/2019_PHI.png"
-//    "https://cdn.freebiesupply.com/images/thumbs/1x/arizona-cardinals-logo.png",
+)
+
+val gameNames = listOf(
+    "Fifa",
+    "Dota 2",
+    "Overwatch",
+    "StarCraft",
+    "COD",
+    "Rocket League",
+    "SSB",
+    "Valorant",
+    "Battlefy",
+    "Championship",
+    "Cobx Masters",
+    "Coupe",
+    "World Cup",
+    "Fortnite",
+    "Free Fire",
+    "Game",
+    "Halo series",
+    "IAAF",
+    "Intel",
+    "Nba 2k"
 )
 
 val flagCodes = FlagKit.getAllAvailableCodes()
 
 object Generator {
     fun generateTeams(count: Int) =  arrayListOf<Team>().apply {
-        for (i in 1..count) {
+        repeat((1..count).count()) {
             add(
                 Team(
                     teamNames.random(),
@@ -63,4 +82,8 @@ object Generator {
             )
         }
     }
+
+    fun getGames() = arrayListOf<String>().apply {
+        repeat(Random.nextInt(1, 50)) { add(gameNames.random()) }
+    }.toSet().toList()
 }
