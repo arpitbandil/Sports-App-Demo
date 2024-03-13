@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ratings"
+        android:icon="@drawable/ic_star"
+        android:title="@string/ratings" />
+    <item
+        android:id="@+id/matches"
+        android:icon="@drawable/ic_trophy"
+        android:title="@string/matches" />
+    <item
+        android:id="@+id/news"
+        android:icon="@drawable/ic_news"
+        android:title="@string/news" />
+    <item
+        android:id="@+id/notifications"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/notifications" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_user"
+        android:title="@string/profile" />
+</menu>

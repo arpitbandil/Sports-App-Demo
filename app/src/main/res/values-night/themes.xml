@@ -1,0 +1,11 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SportsApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <item name="colorPrimary">@color/colorDarkPrimary</item>
+        <item name="android:navigationBarColor">@color/colorDarkPrimary</item>
+        <item name="colorSurface">@color/colorDarkPrimary</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/colorDarkPrimary</item>
+    </style>
+</resources>

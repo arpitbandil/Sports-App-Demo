@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_dark_gray_5"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp">
+
+        <TextView
+            android:id="@+id/tv_sr_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/date/hhmm" />
+
+        <ImageView
+            android:id="@+id/iv_team_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:maxWidth="40dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/team_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/barrier"
+            app:layout_constraintStart_toEndOf="@id/tv_sr_no"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="iv_flag,tv_team_name" />
+
+        <ImageView
+            android:id="@+id/iv_flag"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/team_icon"
+            app:layout_constraintBottom_toTopOf="@+id/tv_team_name"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_country_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toStartOf="@id/iv_arrow"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@id/iv_flag"
+            app:layout_constraintStart_toEndOf="@id/iv_flag"
+            app:layout_constraintTop_toTopOf="@id/iv_flag"
+            tools:text="@tools:sample/cities" />
+
+        <TextView
+            android:id="@+id/tv_team_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/colorSecondaryText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/barrier"
+            app:layout_constraintTop_toBottomOf="@+id/iv_flag"
+            app:layout_constraintEnd_toStartOf="@id/tv_net_worth"
+            tools:text="@tools:sample/full_names" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/team_icon"
+            android:paddingHorizontal="5dp"
+            android:src="@drawable/ic_up_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/tv_rank"
+            app:layout_constraintEnd_toStartOf="@id/tv_rank"
+            app:layout_constraintTop_toTopOf="@id/tv_rank" />
+
+        <TextView
+            android:id="@+id/tv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/tv_net_worth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:text="@tools:sample/us_zipcodes" />
+
+        <TextView
+            android:id="@+id/tv_net_worth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSecondaryText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_rank"
+            tools:text="@tools:sample/us_zipcodes" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

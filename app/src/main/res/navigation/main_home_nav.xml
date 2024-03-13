@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_home_nav"
+    app:startDestination="@id/ratings">
+
+    <fragment
+        android:id="@+id/ratings"
+        android:name="com.arpitbandil.sportsapp.ui.rating.RatingsFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_ratings" />
+    <fragment
+        android:id="@+id/matches"
+        android:name="com.arpitbandil.sportsapp.ui.MatchesFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/news"
+        android:name="com.arpitbandil.sportsapp.ui.NewsFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/notifications"
+        android:name="com.arpitbandil.sportsapp.ui.NotificationFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.arpitbandil.sportsapp.ui.ProfileFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+</navigation>
