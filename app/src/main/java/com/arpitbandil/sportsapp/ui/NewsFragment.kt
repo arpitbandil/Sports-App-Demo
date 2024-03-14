@@ -5,16 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.arpitbandil.sportsapp.R
-import com.arpitbandil.sportsapp.databinding.FragmentHomeBinding
 import com.arpitbandil.sportsapp.databinding.FragmentNotificationsBinding
-import com.arpitbandil.sportsapp.viewBinding
-import com.arpitbandil.sportsapp.viewmodel.HomeViewModel
 
-class NewsFragment : Fragment(R.layout.fragment_notifications) {
+class NewsFragment : Fragment() {
 
-    private val binding by viewBinding(FragmentNotificationsBinding::bind)
+    private lateinit var binding: FragmentNotificationsBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = FragmentNotificationsBinding.inflate(inflater).apply {
+        binding = this
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

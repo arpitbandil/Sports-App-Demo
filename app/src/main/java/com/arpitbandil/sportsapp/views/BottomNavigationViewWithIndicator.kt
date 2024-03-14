@@ -48,7 +48,6 @@ class BottomNavigationViewWithIndicator : BottomNavigationView,
 
     init {
         super.setOnNavigationItemSelectedListener(this)
-        super.setOnItemSelectedListener(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

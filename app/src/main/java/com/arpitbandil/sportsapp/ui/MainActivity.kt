@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity() {
         val navController = NavHostFragment.findNavController(
             supportFragmentManager.findFragmentById(R.id.home_nav_host) as NavHostFragment
         )
-        binding.bottomMainNav.setupWithNavController(navController)
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (binding.bottomMainNav.menu.findItem(destination.id) != null) {
-                binding.bottomMainNav.onNavigationItemSelected(destination.id)
+        binding.bottomMainNav.apply {
+            setupWithNavController(navController)
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                binding.bottomMainNav.onNavigationItemSelected(selectedItemId)
             }
         }
     }

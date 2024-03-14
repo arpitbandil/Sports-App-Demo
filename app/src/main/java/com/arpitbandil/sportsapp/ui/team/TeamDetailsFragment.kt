@@ -2,7 +2,9 @@ package com.arpitbandil.sportsapp.ui.team
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -10,7 +12,6 @@ import com.arpitbandil.sportsapp.R
 import com.arpitbandil.sportsapp.databinding.FragmentTeamDetailsBinding
 import com.arpitbandil.sportsapp.generators.Generator.getGames
 import com.arpitbandil.sportsapp.getTransition
-import com.arpitbandil.sportsapp.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -19,10 +20,18 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 
-class TeamDetailsFragment : Fragment(R.layout.fragment_team_details) {
+class TeamDetailsFragment : Fragment() {
 
-    private val binding by viewBinding(FragmentTeamDetailsBinding::bind)
     private val args: TeamDetailsFragmentArgs by navArgs()
+    private lateinit var binding: FragmentTeamDetailsBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = FragmentTeamDetailsBinding.inflate(inflater).apply {
+        binding = this
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

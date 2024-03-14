@@ -12,7 +12,10 @@
         tools:layout="@layout/fragment_ratings">
         <action
             android:id="@+id/action_team_details"
-            app:destination="@id/teamDetailsFragment" />
+            app:destination="@id/teamDetailsFragment"
+            app:popUpTo="@id/ratings"
+            app:popUpToSaveState="true"
+            app:restoreState="true" />
     </fragment>
     <fragment
         android:id="@+id/matches"
