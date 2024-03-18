@@ -22,7 +22,7 @@
             android:adjustViewBounds="true"
             android:background="@color/window_bg"
             android:contentDescription="@string/player_image"
-            android:maxHeight="300dp"
+            android:maxHeight="400dp"
             android:paddingVertical="10dp"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
