@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.arpitbandil.sportsapp.databinding.FragmentTeamMatchesBinding
 
 class TeamMatchesFragment : Fragment() {
@@ -16,5 +17,10 @@ class TeamMatchesFragment : Fragment() {
         savedInstanceState: Bundle?
     ) = FragmentTeamMatchesBinding.inflate(inflater).apply {
         binding = this
+        binding.btnMatches.setOnClickListener {
+            findNavController().navigate(
+                TeamDetailsFragmentDirections.actionMatches()
+            )
+        }
     }.root
 }

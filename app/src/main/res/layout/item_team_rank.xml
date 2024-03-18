@@ -11,7 +11,7 @@
         android:layout_marginTop="10dp"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:background="@drawable/bg_dark_gray_5"
+        android:background="@drawable/bg_dark_gray_15"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp">
 

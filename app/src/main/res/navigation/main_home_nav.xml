@@ -50,5 +50,13 @@
             android:name="position"
             android:defaultValue="-1"
             app:argType="integer" />
+
+        <action
+            android:id="@+id/action_matches"
+            app:destination="@id/matches"
+            app:popUpTo="@id/teamDetailsFragment"
+            app:popUpToSaveState="true"
+            app:restoreState="true" />
     </fragment>
+
 </navigation>

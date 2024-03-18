@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.arpitbandil.sportsapp.R
 import com.arpitbandil.sportsapp.databinding.FragmentTeamDetailsBinding
 import com.arpitbandil.sportsapp.generators.Generator.getGames
@@ -19,6 +20,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.google.android.material.tabs.TabLayoutMediator
 
 class TeamDetailsFragment : Fragment() {
 
@@ -48,8 +50,8 @@ class TeamDetailsFragment : Fragment() {
         binding.tvName.text = args.team.name
     }
 
-    private fun loadTeamImage() {
-        Glide.with(binding.ivTeamIcon).load(args.team.icon).apply(
+    private fun loadTeamImage() = binding.ivTeamIcon.apply {
+        Glide.with(this).load(args.team.icon).apply(
             RequestOptions().dontTransform().diskCacheStrategy(
                 DiskCacheStrategy.RESOURCE
             )
@@ -72,13 +74,32 @@ class TeamDetailsFragment : Fragment() {
                 return false
             }
         })
-            .into(binding.ivTeamIcon)
+            .into(this)
     }
 
-    private fun setUpUI() {
-        binding.ivBack.setOnClickListener { findNavController().navigateUp() }
-        binding.rvGames.adapter = GameChipAdapter(getGames())
-        binding.executePendingBindings()
+    private fun setUpUI() = binding.apply {
+        ivBack.setOnClickListener { findNavController().navigateUp() }
+        rvGames.adapter = GameChipAdapter(getGames())
+        val tabsList =
+            mutableListOf<String>().apply { repeat(tabLayout.tabCount) { add(tabLayout.getTabAt(it)?.text.toString()) } }
+        viewPager.adapter = FragmentAdapter(tabLayout.tabCount)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = tabsList[position]
+        }.attach()
+        executePendingBindings()
     }
 
+    inner class FragmentAdapter(private val tabCount: Int) :
+        FragmentStateAdapter(requireActivity()) {
+        override fun getItemCount() = tabCount
+
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                0 -> OverviewFragment()
+                1 -> TeamResultFragment(args.team.name)
+                else -> TeamMatchesFragment()
+            }
+        }
+
+    }
 }

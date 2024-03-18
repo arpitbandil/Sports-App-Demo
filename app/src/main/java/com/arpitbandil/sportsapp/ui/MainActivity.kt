@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         )
         binding.bottomMainNav.apply {
             setupWithNavController(navController)
-            navController.addOnDestinationChangedListener { _, destination, _ ->
+            navController.addOnDestinationChangedListener { _, _, _ ->
                 binding.bottomMainNav.onNavigationItemSelected(selectedItemId)
             }
         }

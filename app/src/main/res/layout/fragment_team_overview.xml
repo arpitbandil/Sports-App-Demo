@@ -9,24 +9,13 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_team_rank"
+            android:id="@+id/rv_players"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingVertical="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_team_rank" />
+            tools:listitem="@layout/item_players" />
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/append_progress"
-            android:layout_width="match_parent"
-            android:layout_gravity="bottom"
-            android:progress="20"
-            android:alpha="0.7"
-            android:visibility="gone"
-            app:indicatorColor="@color/colorAccent"
-            app:trackColor="@color/orange_20"
-            android:layout_height="wrap_content"
-            android:indeterminate="true" />
     </FrameLayout>
 </layout>

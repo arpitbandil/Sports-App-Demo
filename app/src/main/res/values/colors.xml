@@ -8,8 +8,10 @@
     <color name="gray">#8F8787</color>
     <color name="gray_text">#8A8A96</color>
     <color name="gray_border">#2D2D37</color>
+    <color name="off_white">#E1E2E5</color>
     <color name="dark_gray">#272737</color>
     <color name="colorPrimaryText">@color/black</color>
     <color name="colorSecondaryText">@color/black</color>
+    <color name="off_grey">#3B3B4D</color>
     <color name="dark_back">@android:color/system_accent2_400</color>
 </resources>
