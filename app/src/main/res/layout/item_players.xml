@@ -15,7 +15,6 @@
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_dark_gray_15"
-            android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

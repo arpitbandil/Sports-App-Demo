@@ -3,4 +3,5 @@
     <color name="colorPrimaryText">@color/white</color>
     <color name="colorSecondaryText">@color/gray_text</color>
     <color name="dark_back">@color/dark_gray</color>
+    <color name="window_bg">@color/colorDarkPrimary</color>
 </resources>

@@ -34,10 +34,9 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.arpitbandil.sportsapp.ui.ProfileFragment"
+        android:name="com.arpitbandil.sportsapp.ui.profile.ProfileFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-
+        tools:layout="@layout/fragment_player_details" />
     <fragment
         android:id="@+id/teamDetailsFragment"
         android:name="com.arpitbandil.sportsapp.ui.team.TeamDetailsFragment"
@@ -57,6 +56,25 @@
             app:popUpTo="@id/teamDetailsFragment"
             app:popUpToSaveState="true"
             app:restoreState="true" />
+        <action
+            android:id="@+id/player_details"
+            app:destination="@id/playerDetailFragment"
+            app:popUpTo="@id/teamDetailsFragment"
+            app:popUpToSaveState="true"
+            app:restoreState="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerDetailFragment"
+        android:name="com.arpitbandil.sportsapp.ui.player.PlayerDetailFragment"
+        android:label="PlayerDetailFragment"
+        tools:layout="@layout/fragment_player_details">
+        <argument
+            android:name="player"
+            app:argType="com.arpitbandil.sportsapp.modal.Player" />
+        <argument
+            android:name="position"
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

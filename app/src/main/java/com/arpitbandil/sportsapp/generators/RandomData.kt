@@ -3,6 +3,9 @@ package com.arpitbandil.sportsapp.generators
 import com.arpitbandil.sportsapp.modal.Player
 import com.arpitbandil.sportsapp.modal.Team
 import com.murgupluoglu.flagkit.FlagKit
+import java.time.LocalDate
+import java.time.Period
+import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
 val teamNames = listOf(
@@ -433,6 +436,13 @@ val playerImages = listOf(
     "https://www.pngall.com/wp-content/uploads/5/Model-Man-PNG-Transparent-HD-Photo.png"
 )
 
+val quotes = listOf(
+    "Going to church doesn’t make you a Christian any more than going to a garage makes you an automobile.",
+    "The planet is fine. The people are fucked.",
+    "Never go to bed mad. Stay up and fight.",
+    "I did not attend his funeral, but I sent a nice letter saying I approved of it."
+)
+
 object Generator {
     fun generateTeams(count: Int) =  arrayListOf<Team>().apply {
         repeat((1..count).count()) {
@@ -454,6 +464,10 @@ object Generator {
         repeat(Random.nextInt(1, 50)) { add(gameNames.random()) }
     }.toSet().toList()
 
+    fun getRoles() = arrayListOf<String>().apply {
+        repeat(Random.nextInt(1, 3)) { add(playerRoles.random()) }
+    }.toSet().toList()
+
     fun generatePlayers() = arrayListOf<Player>().apply {
         repeat((1..Random.nextInt(4, 20)).count()) {
             add(
@@ -466,4 +480,10 @@ object Generator {
             )
         }
     }
+
+    fun getRandomQuote() = quotes.random()
+    fun getBirthday() = LocalDate.now().minus(Period.ofDays((Random.nextInt(365 * 70)))).format(
+        DateTimeFormatter.ofPattern("MMMM, d yyyy")
+    )
+
 }

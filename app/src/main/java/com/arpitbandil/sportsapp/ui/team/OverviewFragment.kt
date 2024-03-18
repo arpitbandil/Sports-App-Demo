@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import com.arpitbandil.sportsapp.databinding.FragmentTeamOverviewBinding
 import com.arpitbandil.sportsapp.generators.Generator.generatePlayers
 import com.arpitbandil.sportsapp.modal.Player
@@ -23,26 +25,20 @@ class OverviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpRecyclerView()
-    }
-
-    private fun setUpRecyclerView() {
         binding.rvPlayers.adapter = MiniPlayerAdapter(generatePlayers(), ::onItemClick)
-
     }
 
     private fun onItemClick(
         position: Int,
         selectedItem: Player,
         sharedElements: Map<View, String>
-    ) {
-    }
-//        findNavController().navigate(
-//            RatingsFragmentDirections.actionTeamDetails(
-//                selectedItem,
-//                position
-//            ),
-//            navigatorExtras = FragmentNavigatorExtras(*sharedElements.map { it.key to it.value }
-//                .toTypedArray())
-//        )
+    ) =
+        findNavController().navigate(
+            TeamDetailsFragmentDirections.playerDetails(
+                selectedItem,
+                position
+            ),
+            navigatorExtras = FragmentNavigatorExtras(*sharedElements.map { it.key to it.value }
+                .toTypedArray())
+        )
 }

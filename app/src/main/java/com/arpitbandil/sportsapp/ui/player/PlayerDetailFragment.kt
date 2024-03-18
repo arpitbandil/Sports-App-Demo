@@ -1,4 +1,4 @@
-package com.arpitbandil.sportsapp.ui.team
+package com.arpitbandil.sportsapp.ui.player
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -10,9 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.arpitbandil.sportsapp.R
-import com.arpitbandil.sportsapp.databinding.FragmentTeamDetailsBinding
-import com.arpitbandil.sportsapp.generators.Generator.getGames
+import com.arpitbandil.sportsapp.databinding.FragmentPlayerDetailsBinding
+import com.arpitbandil.sportsapp.generators.Generator.getRoles
+import com.arpitbandil.sportsapp.generators.teamIcons
 import com.arpitbandil.sportsapp.getTransition
+import com.arpitbandil.sportsapp.ui.rating.RoleAdapter
+import com.arpitbandil.sportsapp.ui.team.TeamResultFragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -22,16 +25,16 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.tabs.TabLayoutMediator
 
-class TeamDetailsFragment : Fragment() {
+class PlayerDetailFragment : Fragment() {
 
-    private val args: TeamDetailsFragmentArgs by navArgs()
-    private lateinit var binding: FragmentTeamDetailsBinding
+    private val args: PlayerDetailFragmentArgs by navArgs()
+    private lateinit var binding: FragmentPlayerDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FragmentTeamDetailsBinding.inflate(inflater).apply {
+    ) = FragmentPlayerDetailsBinding.inflate(inflater).apply {
         binding = this
     }.root
 
@@ -44,14 +47,12 @@ class TeamDetailsFragment : Fragment() {
     private fun handleTransition() {
         postponeEnterTransition()
         sharedElementEnterTransition = getTransition()
-        binding.ivTeamIcon.transitionName = getString(R.string.team_icon_transition, args.position)
-        binding.tvName.transitionName = getString(R.string.team_name_transition, args.position)
-        loadTeamImage()
-        binding.tvName.text = args.team.name
+        binding.ivPlayer.transitionName = getString(R.string.player_icon_transition, args.position)
+        loadPlayerImage()
     }
 
-    private fun loadTeamImage() = binding.ivTeamIcon.apply {
-        Glide.with(this).load(args.team.icon).apply(
+    private fun loadPlayerImage() = binding.ivPlayer.apply {
+        Glide.with(this).load(args.player.image).apply(
             RequestOptions().dontTransform().diskCacheStrategy(
                 DiskCacheStrategy.RESOURCE
             )
@@ -78,8 +79,10 @@ class TeamDetailsFragment : Fragment() {
     }
 
     private fun setUpUI() = binding.apply {
+        Glide.with(ivIcon).load(teamIcons.random()).into(ivIcon)
+        tvName.text = args.player.name
         ivBack.setOnClickListener { findNavController().navigateUp() }
-        rvGames.adapter = GameChipAdapter(getGames())
+        rvPositions.adapter = RoleAdapter(getRoles())
         val tabsList =
             mutableListOf<String>().apply { repeat(tabLayout.tabCount) { add(tabLayout.getTabAt(it)?.text.toString()) } }
         viewPager.adapter = FragmentAdapter(tabLayout.tabCount)
@@ -95,9 +98,9 @@ class TeamDetailsFragment : Fragment() {
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> OverviewFragment()
+                0 -> PlayerOverviewFragment.newInstance(args.player)
                 1 -> TeamResultFragment()
-                else -> TeamMatchesFragment()
+                else -> PlayerSocialFragment()
             }
         }
 

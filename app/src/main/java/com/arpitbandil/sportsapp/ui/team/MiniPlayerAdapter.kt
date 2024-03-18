@@ -4,6 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.arpitbandil.sportsapp.R
 import com.arpitbandil.sportsapp.databinding.ItemPlayersBinding
 import com.arpitbandil.sportsapp.modal.Player
 import com.arpitbandil.sportsapp.viewBinding
@@ -34,14 +35,13 @@ class MiniPlayerAdapter(
             it.tvCountryName.text = Locale("", player.flagCode.uppercase()).displayCountry
             it.tvName.text = player.name
             it.tvRole.text = player.role
+            binding.ivPlayer.transitionName =
+                itemView.context.getString(R.string.player_icon_transition, bindingAdapterPosition)
             it.cnsItemPlayer.setOnClickListener {
                 onClickItem.invoke(
                     bindingAdapterPosition,
                     player,
-                    mapOf(
-                        binding.ivPlayer to binding.ivPlayer.transitionName,
-                        binding.tvName to binding.tvName.transitionName,
-                    )
+                    mapOf(binding.ivPlayer to binding.ivPlayer.transitionName)
                 )
             }
             it.executePendingBindings()

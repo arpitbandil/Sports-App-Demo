@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.arpitbandil.sportsapp.R
 import com.arpitbandil.sportsapp.databinding.FragmentNotificationsBinding
 
-class TeamResultFragment(val name: String) : Fragment() {
+class TeamResultFragment : Fragment() {
 
     private lateinit var binding: FragmentNotificationsBinding
 
@@ -22,6 +22,6 @@ class TeamResultFragment(val name: String) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvTitle.text = getString(R.string.no_results_found_yet_for_this_team, name)
+        binding.tvTitle.text = getString(R.string.no_results_found_yet_for_this_team)
     }
 }
